@@ -30,7 +30,6 @@ local config = {
 		.. "- Think deeply and carefully from first principles step by step.\n"
 		.. "- Zoom out first to see the big picture and then zoom in to details.\n"
 		.. "- Use Socratic method to improve your thinking and coding skills.\n"
-		.. "- Don't elide any code from your output if the answer requires coding.\n"
 		.. "- Take a deep breath; You've got this!\n",
 	-- chat user prompt prefix
 	chat_user_prefix = "🗨:",
@@ -57,24 +56,24 @@ local config = {
 	-- command model (string with model name or table with model name and parameters)
 	command_model = { model = "gpt-4", temperature = 1.1, top_p = 1 },
 	-- command system prompt
-	command_system_prompt = "You are an AI working as code editor.\n\n"
+	command_system_prompt = "You are an AI working as text editor.\n\n"
 		.. "Please AVOID COMMENTARY OUTSIDE OF SNIPPET RESPONSE.\n"
 		.. "Start and end your answer with:\n\n```",
 	-- auto select command response (easier chaining of commands)
 	command_auto_select_response = true,
 
 	-- templates
-	template_selection = "I have the following code from {{filename}}:"
+	template_selection = "I have the following text from {{filename}}:"
 		.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}",
-	template_rewrite = "I have the following code from {{filename}}:"
+	template_rewrite = "I have the following text from {{filename}}:"
 		.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}"
-		.. "\n\nRespond exclusively with the snippet that should replace the code above.",
-	template_append = "I have the following code from {{filename}}:"
+		.. "\n\nRespond exclusively with the snippet that should replace the text above.",
+	template_append = "I have the following text from {{filename}}:"
 		.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}"
-		.. "\n\nRespond exclusively with the snippet that should be appended after the code above.",
-	template_prepend = "I have the following code from {{filename}}:"
+		.. "\n\nRespond exclusively with the snippet that should be appended after the text above.",
+	template_prepend = "I have the following text from {{filename}}:"
 		.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}"
-		.. "\n\nRespond exclusively with the snippet that should be prepended before the code above.",
+		.. "\n\nRespond exclusively with the snippet that should be prepended before the text above.",
 	template_command = "{{command}}",
 
 	-- https://platform.openai.com/docs/guides/speech-to-text/quickstart
@@ -101,12 +100,12 @@ local config = {
 			print(string.format("Command params:\n%s", vim.inspect(params)))
 		end,
 
-		-- GpImplement rewrites the provided selection/range based on comments in the code
+		-- GpImplement rewrites the provided selection/range based on comments in the  text
 		Implement = function(gp, params)
 			local template = "Having following from {{filename}}:\n\n"
 				.. "```{{filetype}}\n{{selection}}\n```\n\n"
-				.. "Please rewrite this code according to the comment instructions."
-				.. "\n\nRespond only with the snippet of finalized code:"
+				.. "Please rewrite this text according to the comment instructions."
+				.. "\n\nRespond only with the snippet of finalized text:"
 
 			gp.Prompt(
 				params,
