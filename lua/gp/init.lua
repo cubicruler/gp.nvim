@@ -32,9 +32,9 @@ local config = {
 		.. "- Use Socratic method to improve your thinking and coding skills.\n"
 		.. "- Take a deep breath; You've got this!\n",
 	-- chat user prompt prefix
-	chat_user_prefix = "🗨:",
+	chat_user_prefix = "user >>",
 	-- chat assistant prompt prefix
-	chat_assistant_prefix = "🤖:",
+	chat_assistant_prefix = "assistant >>",
 	-- chat topic generation prompt
 	chat_topic_gen_prompt = "Summarize the topic of our conversation above"
 		.. " in two or three words. Respond only with those words.",
