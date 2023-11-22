@@ -20,7 +20,7 @@ local config = {
 	-- directory for storing chat files
 	chat_dir = vim.fn.stdpath("data"):gsub("/$", "") .. "/gp/chats",
 	-- chat model (string with model name or table with model name and parameters)
-	chat_model = { model = "gpt-4", temperature = 1.1, top_p = 1 },
+	chat_model = { model = "gpt-4-1106-preview", temperature = 1.1, top_p = 1 },
 	-- chat model system prompt (use this to specify the persona/role of the AI)
 	chat_system_prompt = "You are a general AI assistant.",
 	-- chat custom instructions (not visible in the chat but prepended to model prompt)
@@ -54,7 +54,7 @@ local config = {
 	-- command prompt prefix for asking user for input
 	command_prompt_prefix = "🤖 ~ ",
 	-- command model (string with model name or table with model name and parameters)
-	command_model = { model = "gpt-4", temperature = 1.1, top_p = 1 },
+	command_model = { model = "gpt-4-1106-preview", temperature = 1.1, top_p = 1 },
 	-- command system prompt
 	command_system_prompt = "You are an AI working as text editor.\n\n"
 		.. "Please AVOID COMMENTARY OUTSIDE OF SNIPPET RESPONSE.\n"
