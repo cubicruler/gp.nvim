@@ -933,10 +933,6 @@ M.chat_template = [[
 - file: %s
 - role: %s
 
-Write your queries after %s. Use `%s` or :%sChatRespond to generate a response.
-Chats are saved automatically. To delete this chat, use `%s` or :%sChatDelete.
-Be cautious of very long chats. Start a fresh chat by using `%s` or :%sChatNew.
-
 ---
 
 %s]]
@@ -1013,7 +1009,7 @@ M.prep_chat = function(buf)
 	end
 
 	-- move cursor to a new line at the end of the file
-	M._H.feedkeys("G", "x")
+	-- M._H.feedkeys("G", "x")
 
 	-- ensure normal mode
 	vim.api.nvim_command("stopinsert")
